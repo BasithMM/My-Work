@@ -6,6 +6,37 @@ document.addEventListener('DOMContentLoaded', function() {
             imageUrl: './image/ILM KHURASAN-1.png',
             title: 'Poster'
         },
+        {
+            id: 2,
+            imageUrl: './image/basith.jpeg',
+            title: 'Poster'
+        },
+        {
+            id: 3,
+            imageUrl: './image/epoch zero.png',
+            title: 'Poster'
+        },
+        {
+            id: 4,
+            imageUrl: './image/jazora (1).jpg',
+            title: 'Poster'
+        },
+        {
+            id: 5,
+            imageUrl: './image/logo for copy.jpg',
+            title: 'Poster'
+        },
+        {
+            id: 6,
+            imageUrl: './image/Paper Logo.jpg ',
+            title: 'Poster'
+        },
+        {
+            id: 7,
+            imageUrl: './image/GreenGlass.png',
+            title: 'Poster'
+        },
+
     ];
 
     // Generate pins
