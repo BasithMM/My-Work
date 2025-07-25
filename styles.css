@@ -25,7 +25,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    color: #0077e6;
+    color: #003c8a;
     font-weight: bold;
     font-size: 20px;
 }
@@ -148,7 +148,7 @@ main {
 }
 
 .pin-action-btn {
-    background-color: #e60023;
+    background-color: #003c8a;
     color: white;
     border: none;
     width: 40px;
