@@ -9,32 +9,32 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 2,
             imageUrl: './image/basith.jpeg',
-            title: 'Poster'
+            title: 'Design'
         },
         {
             id: 3,
             imageUrl: './image/epoch zero.png',
-            title: 'Poster'
+            title: 'My site Logo'
         },
         {
             id: 4,
             imageUrl: './image/jazora (1).jpg',
-            title: 'Poster'
+            title: 'business Logo'
         },
         {
             id: 5,
             imageUrl: './image/logo for copy.jpg',
-            title: 'Poster'
+            title: 'Logo'
         },
         {
             id: 6,
             imageUrl: './image/Paper Logo.jpg ',
-            title: 'Poster'
+            title: 'Logo'
         },
         {
             id: 7,
             imageUrl: './image/GreenGlass.png',
-            title: 'Poster'
+            title: 'mockup Logo'
         },
 
     ];
