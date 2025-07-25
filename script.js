@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pinData = [
         {
             id: 1,
-            imageUrl: 'ILM KHURASAN-1.png',
+            imageUrl: './image/ILM KHURASAN-1.png',
             title: 'Poster'
         },
     ];
