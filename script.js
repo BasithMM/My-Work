@@ -36,6 +36,31 @@ document.addEventListener('DOMContentLoaded', function() {
             imageUrl: './image/GreenGlass.png',
             title: 'mockup Logo'
         },
+        {
+            id: 8,
+            imageUrl: './image/tea talk.jpg',
+            title: 'poster'
+        },
+        {
+            id: 9,
+            imageUrl: './image/child.jpg',
+            title: 'poster'
+        },
+        {
+            id: 10,
+            imageUrl: './image/father.jpg',
+            title: 'poster'
+        },
+        {
+            id: 11,
+            imageUrl: './image/picnic.jpg',
+            title: 'poster'
+        },{
+            id: 12,
+            imageUrl: './image/speech.jpg',
+            title: 'poster'
+        },
+        
 
     ];
 
