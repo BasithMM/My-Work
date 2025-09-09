@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 8,
-            imageUrl: './image/tea talk.jpg',
+            imageUrl: './image/tea.jpg',
             title: 'poster'
         },
         {
