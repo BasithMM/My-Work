@@ -8,60 +8,65 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2,
+            imageUrl: './image/sh.jpg',
+            title: 'Thomas Shelby'
+        },
+        {
+            id: 3,
             imageUrl: './image/ILM KHURASAN-1.png',
             title: 'Poster'
         },
         {
-            id: 3,
+            id: 4,
             imageUrl: './image/basith.jpeg',
             title: 'Design'
         },
         {
-            id: 4,
+            id: 5,
             imageUrl: './image/epoch zero.png',
             title: 'My site Logo'
         },
         {
-            id: 5,
+            id: 6,
             imageUrl: './image/jazora (1).jpg',
             title: 'business Logo'
         },
         {
-            id: 6,
+            id: 7,
             imageUrl: './image/logo for copy.jpg',
             title: 'Logo'
         },
         {
-            id: 7,
+            id: 8,
             imageUrl: './image/Paper Logo.jpg ',
             title: 'Logo'
         },
         {
-            id: 8,
+            id: 9,
             imageUrl: './image/GreenGlass.png',
             title: 'mockup Logo'
         },
         {
-            id: 9,
+            id: 10,
             imageUrl: './image/tea.jpg',
             title: 'poster'
         },
         {
-            id: 10,
+            id: 11,
             imageUrl: './image/child.jpg',
             title: 'poster'
         },
         {
-            id: 11,
+            id: 12,
             imageUrl: './image/father.jpg',
             title: 'poster'
         },
         {
-            id: 12,
+            id: 13,
             imageUrl: './image/picnic.jpg',
             title: 'poster'
         },{
-            id: 13,
+            id: 14,
             imageUrl: './image/speech.jpg',
             title: 'poster'
         },
