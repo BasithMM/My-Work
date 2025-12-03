@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 18,
             imageUrl: './image/r.jpg',
-            title: 'Gemini'
+            title: 'chory story'
         },
         {
             id: 15,
