@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const pinsContainer = document.getElementById('pinsContainer');
     const pinData = [
         {
+            id: 19,
+            imageUrl: './image/rfifa.jpg',
+            title: 'poster'
+        },
+        {
+            id: 18,
+            imageUrl: './image/r.jpg',
+            title: 'Gemini'
+        },
+        {
             id: 15,
             imageUrl: './image/kodaikanal.jpg',
             title: 'Typography'
