@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pinData = [
         {
             id: 19,
-            imageUrl: './image/rfifa.jpg',
+            imageUrl: './image/rfifa.webp',
             title: 'poster'
         },
         {
@@ -25,6 +25,21 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 17,
             imageUrl: './image/moody.jpg',
             title: 'Logo'
+        },
+        {
+            id: 20,
+            imageUrl: './image/vagamon copy.jpg',
+            title: 'Tour poster'
+        },
+        {
+            id: 21,
+            imageUrl: './image/KAVI copy.jpg',
+            title: 'poster'
+        },
+        {
+            id: 22,
+            imageUrl: './image/kerala copy.jpg',
+            title: 'Kerala Piravi'
         },
         {
             id: 1,
