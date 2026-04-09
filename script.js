@@ -3,8 +3,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const pinData = [
         {
             id: 27,
+            imageUrl: './image/maradona.jpeg',
+            title: 'Cinematic Poster'
+        },
+        {
+            id: 27,
+            imageUrl: './image/instagram profile copy.jpg',
+            title: 'Instagram Profile'
+        },
+        {
+            id: 27,
+            imageUrl: './image/bazzzzz copy.jpg',
+            title: 'Instagram Profile'
+        },
+        {
+            id: 27,
+            imageUrl: './image/ifff.jpeg',
+            title: 'Ifthar'
+        },
+        {
+            id: 27,
+            imageUrl: './image/pppppp copy.jpg',
+            title: 'Poster'
+        },
+        {
+            id: 27,
+            imageUrl: './image/nexus.jpeg',
+            title: 'Poster'
+        },
+        {
+            id: 27,
             imageUrl: './image/1.jpg',
-            title: 'Ronaldo'
+            title: 'Mockup'
         },
         {
             id: 26,
