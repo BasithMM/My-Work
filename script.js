@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const pinData = [
         {
             id: 27,
+            imageUrl: './image/thooki.jpg',
+            title: 'Cinematic Poster'
+        },
+        {
+            id: 27,
             imageUrl: './image/haaland.jpg',
             title: 'Cinematic Poster'
         },
