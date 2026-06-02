@@ -10,36 +10,39 @@
 
 </head>
 <body>
-    <header>
+     <header>
         <div class="logo">
-            <i><img src="./image/logo_for_copy_n-removebg-preview.png" alt=""></i>
+            <i><img src="./image/logo_for_copy_n-removebg-preview.png" alt="logo" onerror="this.src='https://placehold.co/40x40?text=Z'"></i>
             <span>Zentrix Design</span>
         </div>
         <div class="search-bar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search designs, posters, mockups...">
         </div>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="https://in.pinterest.com/">Explore</a></li>
-                <li><a href="#">Create</a></li>
+                <li><a href="#" class="active" id="navHome">Home</a></li>
+                <li><a href="#" id="navExplore">Explore</a></li>
+                <li><a href="#" id="navCreate">Create</a></li>
             </ul>
         </nav>
         <div class="user-actions">
+            <button class="theme-toggle" id="themeToggleBtn" aria-label="Dark/Light mode"><i class="fas fa-moon"></i></button>
+            <button class="download-all-btn" id="downloadAllBtn"><i class="fas fa-download"></i><span>Save All</span></button>
             <i class="fas fa-bell"></i>
             <i class="fas fa-comment-dots"></i>
             <div class="user-avatar">
-                <img src="./image/profile.jpg" alt="User">
+                <img src="./image/profile.jpg" alt="User" onerror="this.src='https://randomuser.me/api/portraits/men/32.jpg'">
             </div>
         </div>
     </header>
 
     <main>
         <div class="pins-container" id="pinsContainer">
-            <!-- Pins will be generated here by JavaScript -->
+            <!-- dynamic pins injected -->
         </div>
     </main>
+    <div id="toastMessage" class="toast-msg"></div>
 
     <script src="script.js"></script>
 </body>
