@@ -2,15 +2,324 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Zentrix Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="./image/logo_for_copy_n-removebg-preview.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s ease;
+        }
 
+        /* Light & Dark Theme Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --surface: #ffffff;
+            --text-primary: #18181b;
+            --text-secondary: #52525b;
+            --text-muted: #71717a;
+            --border-light: #e4e4e7;
+            --header-bg: rgba(255, 255, 255, 0.92);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+            --accent: #0073a0;
+            --accent-hover: #005f86;
+            --card-radius: 20px;
+            --btn-bg: #f4f4f5;
+        }
+
+        body.dark {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e2a;
+            --surface: #1e1e2e;
+            --text-primary: #ededee;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border-light: #2d2d3a;
+            --header-bg: rgba(18, 18, 24, 0.92);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+            --btn-bg: #2c2c3a;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            backdrop-filter: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        /* Header & Glassmorphism */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 28px;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.45rem;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #0073a0, #00b4aa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo i img {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        .logo span {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--text-primary);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--btn-bg);
+            padding: 10px 18px;
+            border-radius: 44px;
+            width: 45%;
+            max-width: 560px;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s;
+        }
+        .search-bar:focus-within {
+            box-shadow: 0 0 0 3px rgba(0,115,160,0.2);
+            border-color: var(--accent);
+        }
+        .search-bar i {
+            color: var(--text-muted);
+            margin-right: 12px;
+            font-size: 1rem;
+        }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 6px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        nav ul li a.active, nav ul li a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .user-actions i {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .user-actions i:hover {
+            color: var(--accent);
+        }
+        .user-avatar img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        /* theme toggle & extra button */
+        .theme-toggle, .download-all-btn {
+            background: var(--btn-bg);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+        .download-all-btn {
+            width: auto;
+            border-radius: 40px;
+            padding: 0 14px;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--accent);
+            color: white;
+        }
+        .download-all-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(0.97);
+        }
+
+        main {
+            margin-top: 85px;
+            padding: 20px 24px;
+        }
+
+        /* masonry grid */
+        .pins-container {
+            column-count: 5;
+            column-gap: 20px;
+            margin: 0 auto;
+            max-width: 1800px;
+        }
+
+        .pin {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: var(--card-radius);
+            background: var(--surface);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid var(--border-light);
+        }
+        .pin:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .pin-image {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            background-color: var(--bg-secondary);
+        }
+        .pin-actions {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .pin:hover .pin-actions {
+            opacity: 1;
+        }
+        .pin-action-btn {
+            background-color: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            color: white;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.1s, background 0.2s;
+        }
+        .pin-action-btn:hover {
+            background-color: var(--accent);
+            transform: scale(1.05);
+        }
+        .pin-details {
+            padding: 12px 14px;
+            border-top: 1px solid var(--border-light);
+        }
+        .pin-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            z-index: 1200;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            font-weight: 500;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 60px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1280px) {
+            .pins-container { column-count: 4; }
+        }
+        @media (max-width: 1024px) {
+            .pins-container { column-count: 3; }
+            .search-bar { width: 40%; }
+        }
+        @media (max-width: 768px) {
+            .pins-container { column-count: 2; }
+            nav { display: none; }
+            .search-bar { width: 55%; }
+        }
+        @media (max-width: 560px) {
+            .pins-container { column-count: 1; }
+            .search-bar { display: none; }
+            .download-all-btn span { display: none; }
+            .download-all-btn i { margin: 0; }
+            .download-all-btn { width: 40px; padding: 0; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
-     <header>
+    <header>
         <div class="logo">
             <i><img src="./image/logo_for_copy_n-removebg-preview.png" alt="logo" onerror="this.src='https://placehold.co/40x40?text=Z'"></i>
             <span>Zentrix Design</span>
@@ -44,6 +353,281 @@
     </main>
     <div id="toastMessage" class="toast-msg"></div>
 
-    <script src="script.js"></script>
+    <script>
+        (function(){
+            // ---------- EXTENDED PIN DATA (includes unique IDs for download) ----------
+            const pinData = [
+                { id: 1, imageUrl: './image/joker.jpg', title: 'Joker · Cinematic' },
+                { id: 2, imageUrl: './image/sh.jpg', title: 'Thomas Shelby' },
+                { id: 3, imageUrl: './image/ILM KHURASAN-1.png', title: 'Epic Poster' },
+                { id: 4, imageUrl: './image/basith.jpeg', title: 'Abstract Design' },
+                { id: 5, imageUrl: './image/epoch zero.png', title: 'Epoch Zero Logo' },
+                { id: 6, imageUrl: './image/jazora (1).jpg', title: 'Jazora Brand' },
+                { id: 7, imageUrl: './image/logo for copy.jpg', title: 'Minimal Logo' },
+                { id: 8, imageUrl: './image/Paper Logo.jpg', title: 'Paper Identity' },
+                { id: 9, imageUrl: './image/GreenGlass.png', title: 'Green Glass Mockup' },
+                { id: 10, imageUrl: './image/tea.jpg', title: 'Tea Talk Poster' },
+                { id: 11, imageUrl: './image/child.jpg', title: 'Childhood Dreams' },
+                { id: 12, imageUrl: './image/father.jpg', title: 'Father\'s Legacy' },
+                { id: 13, imageUrl: './image/picnic.jpg', title: 'Summer Picnic' },
+                { id: 14, imageUrl: './image/speech.jpg', title: 'Inspirational Speech' },
+                { id: 15, imageUrl: './image/kodaikanal.jpg', title: 'Kodaikanal Type' },
+                { id: 16, imageUrl: './image/poter.jpg', title: 'Movie Poster' },
+                { id: 17, imageUrl: './image/moody.jpg', title: 'Moody Logo' },
+                { id: 18, imageUrl: './image/r.jpg', title: 'Chory Story' },
+                { id: 19, imageUrl: './image/rfifa.webp', title: 'FIFA poster' },
+                { id: 20, imageUrl: './image/vagamon copy.jpg', title: 'Vagamon Tour' },
+                { id: 21, imageUrl: './image/KAVI copy.jpg', title: 'Kavi Poetry' },
+                { id: 22, imageUrl: './image/kerala copy.jpg', title: 'Kerala Piravi' },
+                { id: 23, imageUrl: './image/tea talk.jpg', title: 'Tea Talk Event' },
+                { id: 24, imageUrl: './image/n.jpg', title: 'Abstract N' },
+                { id: 25, imageUrl: './image/g.jpg', title: 'Anime Story' },
+                { id: 26, imageUrl: './image/ro.jpg', title: 'Ronaldo CR7' },
+                { id: 27, imageUrl: './image/thooki.jpg', title: 'Cinematic Poster' },
+                { id: 28, imageUrl: './image/haaland.jpg', title: 'Haaland Edge' },
+                { id: 29, imageUrl: './image/quiz copy.jpg', title: 'Program Quiz' },
+                { id: 30, imageUrl: './image/huda.jpg', title: 'Huda Beauty' },
+                { id: 31, imageUrl: './image/maradona.jpeg', title: 'Maradona Legend' },
+                { id: 32, imageUrl: './image/instagram profile copy.jpg', title: 'IG Profile UI' },
+                { id: 33, imageUrl: './image/bazzzzz copy.jpg', title: 'Banner design' },
+                { id: 34, imageUrl: './image/ifff.jpeg', title: 'Ifthar Feast' },
+                { id: 35, imageUrl: './image/pppppp copy.jpg', title: 'Modern Poster' },
+                { id: 36, imageUrl: './image/nexus.jpeg', title: 'Nexus Event' },
+                { id: 37, imageUrl: './image/1.jpg', title: 'New Year Mockup' },
+                { id: 38, imageUrl: './image/q.jpg', title: 'Quote Graphic' },
+                { id: 39, imageUrl: './image/7.jpg', title: 'Travel Vibes' }
+            ];
+
+            let currentTheme = localStorage.getItem('zentrixTheme') || 'light';
+            const pinsContainer = document.getElementById('pinsContainer');
+            const searchInput = document.querySelector('.search-bar input');
+            const toastEl = document.getElementById('toastMessage');
+
+            // Helper toast
+            function showToast(message, duration = 2200) {
+                toastEl.innerText = message;
+                toastEl.style.opacity = '1';
+                setTimeout(() => {
+                    toastEl.style.opacity = '0';
+                }, duration);
+            }
+
+            // download single image from url (fetch + blob)
+            async function downloadImage(url, filename) {
+                try {
+                    const response = await fetch(url, { mode: 'cors' });
+                    if (!response.ok) throw new Error('Network error');
+                    const blob = await response.blob();
+                    const blobUrl = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    link.download = filename.endsWith('.png') || filename.endsWith('.jpg') ? filename : `${filename}.jpg`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(blobUrl);
+                    showToast(`✅ Downloaded: ${filename}`);
+                } catch (err) {
+                    console.warn(err);
+                    showToast(`⚠️ Couldn't download ${filename}, try right-click save.`);
+                }
+            }
+
+            // generate pin HTML elements (with individual download)
+            function createPinElement(pin) {
+                const pinDiv = document.createElement('div');
+                pinDiv.className = 'pin';
+                const safeTitle = pin.title.replace(/[^a-z0-9]/gi, '_').substring(0, 40);
+                const fileName = `${safeTitle || 'zentrix'}_${pin.id}.jpg`;
+                pinDiv.innerHTML = `
+                    <img src="${pin.imageUrl}" alt="${pin.title}" class="pin-image" loading="lazy" onerror="this.src='https://placehold.co/400x500?text=Zentrix'">
+                    <div class="pin-actions">
+                        <button class="pin-action-btn download-single" data-url="${pin.imageUrl}" data-filename="${fileName}" title="Download image">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="pin-action-btn pin-save-btn" title="Save inspiration">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                        <button class="pin-action-btn pin-more" title="More">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="pin-details">
+                        <div class="pin-title">${escapeHtml(pin.title)}</div>
+                    </div>
+                `;
+                // attach download event after DOM insert
+                const downloadBtn = pinDiv.querySelector('.download-single');
+                if (downloadBtn) {
+                    downloadBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const url = downloadBtn.dataset.url;
+                        const filename = downloadBtn.dataset.filename;
+                        downloadImage(url, filename);
+                    });
+                }
+                // pin save toast (just fun action)
+                const saveBtn = pinDiv.querySelector('.pin-save-btn');
+                if (saveBtn) {
+                    saveBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showToast(`📌 "${pin.title}" saved to your board!`);
+                    });
+                }
+                const moreBtn = pinDiv.querySelector('.pin-more');
+                if (moreBtn) {
+                    moreBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showToast(`✨ More options for "${pin.title}" soon`);
+                    });
+                }
+                return pinDiv;
+            }
+
+            function escapeHtml(str) {
+                return str.replace(/[&<>]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    return m;
+                });
+            }
+
+            // render pins with filter (search)
+            function renderPins(filterText = '') {
+                pinsContainer.innerHTML = '';
+                const lowerFilter = filterText.toLowerCase().trim();
+                const filtered = lowerFilter ? pinData.filter(p => p.title.toLowerCase().includes(lowerFilter)) : [...pinData];
+                
+                if (filtered.length === 0) {
+                    const noResultDiv = document.createElement('div');
+                    noResultDiv.className = 'no-results';
+                    noResultDiv.innerHTML = '<i class="fas fa-search" style="font-size:2rem; opacity:0.5;"></i><p style="margin-top:12px;">No designs found — try another keyword 🎨</p>';
+                    pinsContainer.appendChild(noResultDiv);
+                    return;
+                }
+                
+                filtered.forEach(pin => {
+                    pinsContainer.appendChild(createPinElement(pin));
+                });
+            }
+
+            // ----- NEW FUNCTION: Download all visible pins (batch download) -----
+            async function downloadAllVisiblePins() {
+                const currentFilter = searchInput.value.trim().toLowerCase();
+                const visiblePins = currentFilter ? pinData.filter(p => p.title.toLowerCase().includes(currentFilter)) : [...pinData];
+                if (visiblePins.length === 0) {
+                    showToast("No images to download. Adjust search.");
+                    return;
+                }
+                showToast(`⏳ Preparing ${visiblePins.length} downloads...`, 1500);
+                for (let i = 0; i < visiblePins.length; i++) {
+                    const pin = visiblePins[i];
+                    const safeTitle = pin.title.replace(/[^a-z0-9]/gi, '_').substring(0, 35);
+                    const filename = `${safeTitle || 'zentrix'}_${pin.id}.jpg`;
+                    // delay to avoid browser flood and respect rate
+                    await new Promise(resolve => setTimeout(resolve, 280));
+                    try {
+                        await downloadImage(pin.imageUrl, filename);
+                    } catch(e) { console.warn(e); }
+                }
+                showToast(`📦 Completed! Downloaded ${visiblePins.length} items.`);
+            }
+
+            // --- THEME TOGGLE with icon update ---
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark');
+                    localStorage.setItem('zentrixTheme', 'dark');
+                    const toggleIcon = document.querySelector('#themeToggleBtn i');
+                    if(toggleIcon) toggleIcon.className = 'fas fa-sun';
+                } else {
+                    document.body.classList.remove('dark');
+                    localStorage.setItem('zentrixTheme', 'light');
+                    const toggleIcon = document.querySelector('#themeToggleBtn i');
+                    if(toggleIcon) toggleIcon.className = 'fas fa-moon';
+                }
+                currentTheme = theme;
+            }
+            
+            function toggleTheme() {
+                if (currentTheme === 'light') {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            }
+
+            // --- extra interactive features: explore / create buttons (just simulation)---
+            function setupNavActions() {
+                const homeBtn = document.getElementById('navHome');
+                const exploreBtn = document.getElementById('navExplore');
+                const createBtn = document.getElementById('navCreate');
+                if(homeBtn) homeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    searchInput.value = '';
+                    renderPins('');
+                    setActiveNav(homeBtn);
+                    showToast('🏠 Back to home gallery');
+                });
+                if(exploreBtn) exploreBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showToast('🌍 Explore trending designs — coming soon!');
+                    setActiveNav(exploreBtn);
+                });
+                if(createBtn) createBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showToast('✨ Create studio will open soon. Share your vision!');
+                    setActiveNav(createBtn);
+                });
+            }
+            function setActiveNav(activeLink) {
+                document.querySelectorAll('nav ul li a').forEach(link => link.classList.remove('active'));
+                activeLink.classList.add('active');
+            }
+
+            // initial load & search event
+            function init() {
+                // set saved theme
+                const savedTheme = localStorage.getItem('zentrixTheme');
+                if (savedTheme === 'dark') setTheme('dark');
+                else setTheme('light');
+                
+                renderPins('');
+                setupNavActions();
+                
+                // live search
+                searchInput.addEventListener('input', (e) => {
+                    renderPins(e.target.value);
+                });
+                
+                // theme toggle
+                const themeBtn = document.getElementById('themeToggleBtn');
+                if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+                
+                // DOWNLOAD ALL button
+                const downloadAllBtn = document.getElementById('downloadAllBtn');
+                if(downloadAllBtn) {
+                    downloadAllBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        downloadAllVisiblePins();
+                    });
+                }
+                
+                // Additional fallback for user avatar & logo error placeholders
+                const imgs = document.querySelectorAll('img');
+                imgs.forEach(img => {
+                    img.addEventListener('error', function() {
+                        if(!this.dataset.fallbackSet) {
+                            this.src = 'https://placehold.co/500x600?text=Zentrix';
+                            this.dataset.fallbackSet = true;
+                        }
+                    });
+                });
+            }
+            
+            init();
+        })();
+    </script>
 </body>
 </html>
