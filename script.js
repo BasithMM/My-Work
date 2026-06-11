@@ -1,6 +1,8 @@
  (function(){
             // ---------- EXTENDED PIN DATA (includes unique IDs for download) ----------
             const pinData = [
+                { id: 41, imageUrl: './image/campaign.jpg', title: 'Campaign' },
+                { id: 40, imageUrl: './image/union summit.jpg', title: 'Poster' },
                 { id: 1, imageUrl: './image/joker.jpg', title: 'Joker · Cinematic' },
                 { id: 2, imageUrl: './image/sh.jpg', title: 'Thomas Shelby' },
                 { id: 3, imageUrl: './image/ILM KHURASAN-1.png', title: 'Epic Poster' },
