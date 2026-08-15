@@ -1,6 +1,11 @@
  (function(){
             // ---------- EXTENDED PIN DATA (includes unique IDs for download) ----------
             const pinData = [
+                { id: 46, imageUrl: './image/Checkmate.jpeg', title: 'Sports' },
+                { id: 45, imageUrl: './image/Portfolio.jpeg', title: 'portfolio' },
+                { id: 44, imageUrl: './image/independence day.jpg', title: 'independence day' },
+                { id: 43, imageUrl: './image/Foundation Day.jpeg', title: 'foundation day' },
+                { id: 42, imageUrl: './image/Round Table .jpeg', title: 'program poster' },
                 { id: 41, imageUrl: './image/campaign.jpg', title: 'Campaign poster' },
                 { id: 40, imageUrl: './image/union summit.jpg', title: 'Poster' },
                 { id: 1, imageUrl: './image/joker.jpg', title: 'Joker · Cinematic' },
