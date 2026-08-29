@@ -1,6 +1,13 @@
  (function(){
            // ---------- EXTENDED PIN DATA (includes unique IDs for download) ----------
 const pinData = [
+    { id: 40, imageUrl: './image/union summit.jpg', title: 'Poster' },
+    { id: 41, imageUrl: './image/campaign.jpg', title: 'Campaign poster' },
+    { id: 42, imageUrl: './image/Round Table .jpeg', title: 'program poster' },
+    { id: 43, imageUrl: './image/Foundation Day.jpeg', title: 'foundation day' },
+    { id: 44, imageUrl: './image/independence day.jpg', title: 'independence day' },
+    { id: 45, imageUrl: './image/Portfolio.jpeg', title: 'portfolio' },
+    { id: 46, imageUrl: './image/Checkmate.jpeg', title: 'Sports' }
     { id: 39, imageUrl: './image/7.jpg', title: 'Travel Vibes' },
     { id: 38, imageUrl: './image/q.jpg', title: 'Quote Graphic' },
     { id: 37, imageUrl: './image/1.jpg', title: 'New Year Mockup' },
@@ -40,13 +47,7 @@ const pinData = [
     { id: 3, imageUrl: './image/ILM KHURASAN-1.png', title: 'Epic Poster' },
     { id: 2, imageUrl: './image/sh.jpg', title: 'Thomas Shelby' },
     { id: 1, imageUrl: './image/joker.jpg', title: 'Joker · Cinematic' },
-    { id: 40, imageUrl: './image/union summit.jpg', title: 'Poster' },
-    { id: 41, imageUrl: './image/campaign.jpg', title: 'Campaign poster' },
-    { id: 42, imageUrl: './image/Round Table .jpeg', title: 'program poster' },
-    { id: 43, imageUrl: './image/Foundation Day.jpeg', title: 'foundation day' },
-    { id: 44, imageUrl: './image/independence day.jpg', title: 'independence day' },
-    { id: 45, imageUrl: './image/Portfolio.jpeg', title: 'portfolio' },
-    { id: 46, imageUrl: './image/Checkmate.jpeg', title: 'Sports' }
+    
 ];
 
             let currentTheme = localStorage.getItem('zentrixTheme') || 'light';
