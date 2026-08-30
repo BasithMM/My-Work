@@ -165,7 +165,7 @@
             margin-left: 4px;
         }
 
-        /* gallery grid */
+        /* gallery grid - clean cards without overlays */
         .gallery {
             column-count: 5;
             column-gap: 16px;
@@ -199,67 +199,6 @@
 
         .gallery-item:hover img {
             filter: brightness(0.96);
-        }
-
-        .gallery-item .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 16px 16px 16px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.25));
-            color: white;
-            opacity: 0;
-            transition: opacity 0.25s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            pointer-events: none;
-        }
-
-        .gallery-item:hover .overlay {
-            opacity: 1;
-        }
-
-        .overlay .title {
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.3px;
-            max-width: 70%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .overlay .save-btn {
-            background: #e60023;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            padding: 8px 18px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.3px;
-            cursor: default;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            pointer-events: none;
-        }
-
-        .gallery-item .category-tag {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
-            color: white;
-            font-size: 0.65rem;
-            font-weight: 500;
-            padding: 4px 12px;
-            border-radius: 20px;
-            letter-spacing: 0.3px;
-            pointer-events: none;
-            z-index: 2;
         }
 
         /* ----- LIGHTBOX ----- */
@@ -579,19 +518,6 @@
                 { id: 46, imageUrl: './image/Checkmate.jpeg', title: 'Sports', category: 'Merchandise Design' }
             ];
 
-            // Assign categories for items that don't have one
-            const categories = [
-                'Brand Identity Design',
-                'Social Media Design',
-                'Packaging Design',
-                'AI-assisted Graphic Design',
-                'Advertising Design',
-                'Presentation Design',
-                'Infographic Design',
-                'Photo Manipulation',
-                'Merchandise Design'
-            ];
-
             // Sort by id descending: newest first
             const imageSet = [...rawImageSet].sort((a, b) => b.id - a.id);
 
@@ -639,12 +565,10 @@
             function getFilteredItems() {
                 let items = imageSet;
 
-                // Filter by category
                 if (currentCategory !== 'all') {
                     items = items.filter(item => item.category === currentCategory);
                 }
 
-                // Filter by search term
                 if (currentSearchTerm && currentSearchTerm.trim() !== '') {
                     const term = currentSearchTerm.trim().toLowerCase();
                     items = items.filter(item =>
@@ -673,7 +597,7 @@
                 });
             }
 
-            // ----- render items -----
+            // ----- render items (clean cards - no overlay, no tags) -----
             function renderItems() {
                 const filtered = getFilteredItems();
                 gallery.innerHTML = '';
@@ -699,37 +623,16 @@
                     img.alt = item.title || 'Gallery image';
                     img.loading = 'lazy';
 
-                    // category tag
-                    const catTag = document.createElement('span');
-                    catTag.className = 'category-tag';
-                    catTag.textContent = item.category || 'Uncategorized';
-
-                    // overlay
-                    const overlay = document.createElement('div');
-                    overlay.className = 'overlay';
-                    const titleSpan = document.createElement('span');
-                    titleSpan.className = 'title';
-                    titleSpan.textContent = item.title || 'Untitled';
-                    const saveBtn = document.createElement('span');
-                    saveBtn.className = 'save-btn';
-                    saveBtn.textContent = 'Save';
-
-                    overlay.appendChild(titleSpan);
-                    overlay.appendChild(saveBtn);
-                    div.appendChild(catTag);
                     div.appendChild(img);
-                    div.appendChild(overlay);
 
                     // --- CLICK: open lightbox ---
                     div.addEventListener('click', function(e) {
                         const imgEl = this.querySelector('img');
-                        const titleEl = this.querySelector('.title');
-                        const catEl = this.querySelector('.category-tag');
                         if (imgEl) {
                             openLightbox(
                                 imgEl.src,
-                                titleEl ? titleEl.textContent : 'Image',
-                                catEl ? catEl.textContent : 'Uncategorized'
+                                item.title || 'Image',
+                                item.category || 'Uncategorized'
                             );
                         }
                     });
@@ -743,7 +646,6 @@
             // ----- update gallery -----
             function updateGallery() {
                 renderItems();
-                // Update active state on category buttons
                 document.querySelectorAll('.category-btn').forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.category === currentCategory);
                 });
@@ -788,7 +690,6 @@
                         currentSearchTerm = '';
                         searchInput.value = '';
                         updateGallery();
-                        // Reset category buttons
                         document.querySelectorAll('.category-btn').forEach(btn => {
                             btn.classList.toggle('active', btn.dataset.category === 'all');
                         });
